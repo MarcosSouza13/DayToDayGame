@@ -101,21 +101,74 @@ def clicarJogar():
     global estado
     estado = 'jogo'
 
-# Legenda Jogo que aparece na 2º tela
+# Legenda Jogo que aparece na 1º tela
 def legendaJogo():
     global estado
     estado = 'legendaJogo'
 
-# Função do botão próximo, após a 3º tela do Jogo
-def clicarProximo():
+# Legenda Avatar que aparece na 2º tela
+def legendaAvatar():
     global estado
-    estado = 'proximaTelaJogo'
+    estado = 'legendaAvatar'
+
+# Legenda Tarefas que aparece na 3º tela
+def legendaTarefas():
+    global estado
+    estado = 'legendaTarefas'
+
+# Função criada, para definir o título, e legendas das tarefas/horários que aparecem na 4º tela
+def tituloLegendasTarefas():
+
+    fontTituloTarefas = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 32, bold=True)
+    tituloTarefas = fontTituloTarefas.render("Coloque 3 tarefas da sua rotina", True, WHITE)
+
+    fontTarefa1 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
+    tarefa1 = fontTarefa1.render("Tarefa 1", True, WHITE)
+
+    fontTarefa2 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
+    tarefa2 = fontTarefa2.render("Tarefa 2", True, WHITE)
+
+    fontTarefa3 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
+    tarefa3 = fontTarefa3.render("Tarefa 3", True, WHITE)
+
+    fontHorarioTarefa1 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
+    horarioTarefa1 = fontHorarioTarefa1.render("Horário da 1º Tarefa", True, WHITE)
+
+    fontHorarioTarefa2 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
+    horarioTarefa2 = fontHorarioTarefa2.render("Horário da 2º Tarefa", True, WHITE)
+
+    fontHorarioTarefa3 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
+    horarioTarefa3 = fontHorarioTarefa3.render("Horário da 3º Tarefa", True, WHITE)
+
+    botaoContinuarTarefas = criarRetangulo("Continuar", (300, 500, 200, 75), BLUE, TOMATO, clicarProximoTarefas)
+
+    botao(screen, botaoContinuarTarefas)
+
+    screen.blit(tituloTarefas, (200, 100, 200, 75))
+
+    screen.blit(tarefa1, (160, 180, 100, 10))
+    screen.blit(tarefa2, (160, 280, 100, 10))
+    screen.blit(tarefa3, (160, 380, 100, 10))
+
+    screen.blit(horarioTarefa1, (505, 180, 100, 10))
+    screen.blit(horarioTarefa2, (505, 280, 100, 10))
+    screen.blit(horarioTarefa3, (505, 380, 100, 10))
+
+# Função do botão próximo (instruções), redirecionando para página Tarefas
+def clicarProximoTarefas():
+    global estado
+    estado = 'proximaTelaTarefas'
 
     clock = pygame.time.Clock()
     input_box1 = InputBox(100, 200, 140, 32)
     input_box2 = InputBox(100, 300, 140, 32)
     input_box3 = InputBox(100, 400, 140, 32)
-    input_boxes = [input_box1, input_box2, input_box3]
+
+    input_box4 = InputBox(500, 200, 140, 32)
+    input_box5 = InputBox(500, 300, 140, 32)
+    input_box6 = InputBox(500, 400, 140, 32)
+
+    input_boxes = [input_box1, input_box2, input_box3, input_box4, input_box5, input_box6]
     done = False
 
     while not done:
@@ -135,7 +188,13 @@ def clicarProximo():
         clock.tick(30)
 
         screen.fill(BLUE)
-        pygame.display.update()
+
+        tituloLegendasTarefas()
+
+# Função do botão próximo (avatar), redirecionando para página Instruções
+def clicarProximoInstrucoes():
+    global estado
+    estado = 'clicarProximoInstrucoes'
 
 # Função do botão Opções
 def clicarOpcoes():
@@ -208,10 +267,23 @@ botaoVoltar = criarRetangulo("Voltar", (300, 500, 200, 75), BLUE, TOMATO, clicar
 botaoLigarSom = criarRetangulo("Som ON", (300, 300, 200, 75), BLUE, TOMATO, clicarLigarSom)
 botaoDesligarSom = criarRetangulo("Som OFF", (300, 400, 200, 75), BLUE, TOMATO, clicarDesligarSom)
 
-# Jogo 1º Tela
-legenda1 = criarRetangulo("Ajude seu avatar a sair da PROCASTINAÇÃO", (300, 250, 200, 75), BLUE, BLUE, legendaJogo)
-legenda2 = criarRetangulo("Comece definindo os horários com 3 tarefas", (300, 350, 200, 75), BLUE, BLUE, legendaJogo)
-botaoProximo = criarRetangulo("Próximo", (300, 500, 200, 75), BLUE, TOMATO, clicarProximo)
+# Jogo 1º tela / Avatar
+legendaJogoAvatar = criarRetangulo("Escolha seu avatar", (300, 250, 200, 75), BLUE, BLUE, legendaAvatar)
+botaoProximoInstrucoes = criarRetangulo("Próximo", (300, 500, 200, 75), BLUE, TOMATO, clicarProximoInstrucoes)
+
+# Jogo 2º Tela / Instruções
+legenda1Jogo = criarRetangulo("Ajude seu avatar a sair da PROCASTINAÇÃO", (300, 250, 200, 75), BLUE, BLUE, legendaJogo)
+legenda2Jogo = criarRetangulo("Comece definindo os horários com 3 tarefas", (300, 350, 200, 75), BLUE, BLUE, legendaJogo)
+botaoProximoTarefas = criarRetangulo("Próximo", (300, 500, 200, 75), BLUE, TOMATO, clicarProximoTarefas)
+
+# Jogo 3º Tela / Tarefas
+
+
+# Jogo 4º Tela / Animação
+
+
+# Jogo 5º Tela / Gameover
+
 
 #-------------------------------------------Definição Pygame/Criação dos botões------------------------------------
 
@@ -231,13 +303,17 @@ while jogoRodando:
             checarEventoBotao(botaoOpcoes, event)
             checarEventoBotao(botaoSair, event)
         elif estado == 'jogo':
-            checarEventoBotao(botaoProximo, event)
+            checarEventoBotao(botaoProximoInstrucoes, event)
         elif estado == 'opcoes':
             checarEventoBotao(botaoLigarSom, event)
             checarEventoBotao(botaoDesligarSom, event)
             checarEventoBotao(botaoVoltar, event)
+        elif estado == 'clicarProximoInstrucoes':
+            checarEventoBotao(botaoProximoTarefas, event)
+            clicarProximoInstrucoes()
         elif estado == 'proximaTelaJogo':
-            clicarProximo()
+            checarEventoBotao(botaoContinuarTarefas, event)
+            clicarProximoTarefas()
 
     screen.fill(BLUE)
     background = pygame.image.load("./Assets/Images/checklist.png").convert()
@@ -251,13 +327,24 @@ while jogoRodando:
         botao(screen, botaoOpcoes)
         botao(screen, botaoSair)
     elif estado == 'jogo':
-        botao(screen, legenda1)
-        botao(screen, legenda2)
-        botao(screen, botaoProximo)
+        masculino = pygame.image.load("./Assets/Images/masculino.png").convert()
+        screen.blit(masculino, (250,325))
+        feminino = pygame.image.load("./Assets/Images/feminino.png").convert()
+        screen.blit(feminino, (420, 325))
+
+        botao(screen, legendaJogoAvatar)
+        botao(screen, botaoProximoInstrucoes)
+    elif estado == 'clicarProximoInstrucoes':
+        botao(screen, legenda1Jogo)
+        botao(screen, legenda2Jogo)
+        botao(screen, botaoProximoTarefas)
+    elif estado == 'proximaTelaJogo':
+        botao(screen, legendaJogoTarefas)
     elif estado == 'opcoes':
         botao(screen, botaoLigarSom)
         botao(screen, botaoDesligarSom)
         botao(screen, botaoVoltar)
+
     pygame.display.update()
 
 pygame.quit()

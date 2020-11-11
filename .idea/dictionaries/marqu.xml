@@ -2,6 +2,7 @@
   <dictionary name="marqu">
     <words>
       <w>ajude</w>
+      <w>animação</w>
       <w>aparece</w>
       <w>após</w>
       <w>armazenar</w>
@@ -21,6 +22,7 @@
       <w>cima</w>
       <w>classe</w>
       <w>clicar</w>
+      <w>coloque</w>
       <w>comece</w>
       <w>contendo</w>
       <w>criar</w>
@@ -31,6 +33,7 @@
       <w>desligado</w>
       <w>desligar</w>
       <w>diretorio</w>
+      <w>escolha</w>
       <w>estado</w>
       <w>estados</w>
       <w>estiver</w>
@@ -41,15 +44,20 @@
       <w>fundo</w>
       <w>função</w>
       <w>funções</w>
+      <w>gameover</w>
       <w>horários</w>
       <w>imagem</w>
       <w>imagens</w>
       <w>inativa</w>
       <w>inicia</w>
       <w>inicialização</w>
+      <w>instruc</w>
+      <w>instrucoes</w>
+      <w>instruções</w>
       <w>jogar</w>
       <w>jogo</w>
       <w>legenda</w>
+      <w>legendas</w>
       <w>ligado</w>
       <w>ligar</w>
       <w>mostrar</w>
@@ -63,11 +71,13 @@
       <w>opção</w>
       <w>opções</w>
       <w>pegar</w>
+      <w>possível</w>
       <w>procastinação</w>
       <w>proxima</w>
       <w>proximo</w>
       <w>próximo</w>
       <w>pygame</w>
+      <w>página</w>
       <w>quando</w>
       <w>redirecionando</w>
       <w>respectivos</w>
@@ -75,6 +85,7 @@
       <w>retornar</w>
       <w>retângulo</w>
       <w>rodando</w>
+      <w>rotina</w>
       <w>sair</w>
       <w>seus</w>
       <w>tamanho</w>
