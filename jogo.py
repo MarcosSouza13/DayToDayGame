@@ -312,7 +312,6 @@ while jogoRodando:
             checarEventoBotao(botaoProximoTarefas, event)
             clicarProximoInstrucoes()
         elif estado == 'proximaTelaJogo':
-            checarEventoBotao(botaoContinuarTarefas, event)
             clicarProximoTarefas()
 
     screen.fill(BLUE)
@@ -338,8 +337,6 @@ while jogoRodando:
         botao(screen, legenda1Jogo)
         botao(screen, legenda2Jogo)
         botao(screen, botaoProximoTarefas)
-    elif estado == 'proximaTelaJogo':
-        botao(screen, legendaJogoTarefas)
     elif estado == 'opcoes':
         botao(screen, botaoLigarSom)
         botao(screen, botaoDesligarSom)
