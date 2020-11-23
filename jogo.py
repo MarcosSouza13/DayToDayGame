@@ -324,7 +324,7 @@ def telaTerceiroNivel():
 # Função da continuação do jogo, caso o jogador consiga completar todas as atividades diárias - FEMININO
 def telaSegundoNivelFeminino():
     global estado
-    estado = 'telaSegundoNivel'
+    estado = 'telaSegundoNivelFeminino'
 
     fontTituloNivel = criarRetangulo("PARABÉNS, desbloqueou o nível 2", (300, 250, 200, 75), BLUE, BLUE, legendaGameOver)
     fontTituloNivel2 = criarRetangulo("Você concluiu as atividades diárias", (300, 300, 200, 75), BLUE, BLUE,
@@ -965,7 +965,7 @@ def clicarProximoTarefasFeminino():
         cb3.render_checkbox()
 
         if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked():
-            telaSegundoNivel()
+            telaSegundoNivelFeminino()
 
         pygame.display.flip()
         clock.tick(60)
@@ -978,7 +978,7 @@ def clicarProximoTarefasFeminino():
 # Função do botão próximo (instruções Feminino), redirecionando para página Tarefas - NÍVEL 2
 def clicarProximoTarefasNivel2Feminino():
     global estado
-    estado = 'clicarProximoTarefasNivel2'
+    estado = 'clicarProximoTarefasNivel2Feminino'
 
     clock = pygame.time.Clock()
     input_box1 = InputBox(400, 50, 140, 32)
@@ -997,7 +997,7 @@ def clicarProximoTarefasNivel2Feminino():
     cb4 = Checkbox(screen, 650, 250)
     input_boxes = [input_box1, input_box2, input_box3, input_box4]
 
-    feminino = pygame.image.load("./Assets/Images/homem.png").convert()
+    feminino = pygame.image.load("./Assets/Images/mulher.png").convert()
 
     # Declarando a fonte do placar e variável contadora
     font = pygame.font.SysFont('sans', 40)
@@ -1064,7 +1064,7 @@ def clicarProximoTarefasNivel2Feminino():
         cb4.render_checkbox()
 
         if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked() and not cb4.is_unchecked():
-            telaTerceiroNivel()
+            telaTerceiroNivelFeminino()
 
         pygame.display.flip()
         clock.tick(60)
