@@ -33,6 +33,102 @@ cor_ativa = pygame.Color('Blue')
 fonte = pygame.font.Font(None, 32)
 
 
+# Classe representando a imagem de academia, atividades representando que o usuário concluiu as tarefas.
+class Venceu():
+    def __init__(self, x,y):
+        self.image = pygame.image.load("./Assets/Images/ganhou.png").convert()
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)
+
+
+# Classe representando a imagem da cama representando que o usuário não concluiu as tarefas.
+class Perdeu():
+    def __init__(self, x, y):
+        self.image = pygame.image.load("./Assets/Images/cama.png").convert()
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+    def draw(self, surface):
+            surface.blit(self.image, self.rect)
+
+
+# Classe representando o personagem masculino.
+class Masculino():
+    def __init__(self, x, y):
+        self.image = pygame.image.load("./Assets/Images/homem.png").convert()
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)
+
+    def colideSegundoNivel(self, other_sprite):
+        col = self.rect.colliderect(other_sprite)
+        if col:
+            telaSegundoNivel()
+
+    def colideTerceiroNivel(self, other_sprite):
+        col = self.rect.colliderect(other_sprite)
+        if col:
+            telaTerceiroNivel()
+
+    def colideUltimoNivel(self, other_sprite):
+        col = self.rect.colliderect(other_sprite)
+        if col:
+            ultimaTela()
+
+    def colideGameOver(self, other_sprite):
+        col = self.rect.colliderect(other_sprite)
+        if col:
+            gameover()
+
+
+# Classe representando o personagem feminino.
+class Feminino():
+    def __init__(self, x, y):
+        self.image = pygame.image.load("./Assets/Images/mulher.png").convert()
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)
+
+    def colideSegundoNivel(self, other_sprite):
+        col = self.rect.colliderect(other_sprite)
+        if col:
+            telaSegundoNivelFeminino()
+
+    def colideTerceiroNivel(self, other_sprite):
+        col = self.rect.colliderect(other_sprite)
+        if col:
+            telaTerceiroNivelFeminino()
+
+    def colideUltimoNivel(self, other_sprite):
+        col = self.rect.colliderect(other_sprite)
+        if col:
+            ultimaTela()
+
+    def colideGameOver(self, other_sprite):
+        col = self.rect.colliderect(other_sprite)
+        if col:
+            gameover()
+
+
+# Objetos dos personagens, e das imagens que representam vitória e derrota nas atividades diárias
+homem = Masculino(300, 300)
+mulher = Feminino(300, 300)
+
+ganhou = Venceu(570, 300)
+perdeu = Perdeu(40, 325)
+
+
 # Classe utilizada para criação dos InputBoxes
 class InputBox:
 
@@ -425,12 +521,6 @@ def tituloLegendasTarefas():
     fontTarefa3 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
     tarefa3 = fontTarefa3.render("Tarefa 3", True, WHITE)
 
-    cama = pygame.image.load("./Assets/Images/cama.png").convert()
-    ganhou = pygame.image.load("./Assets/Images/ganhou.png").convert()
-
-    screen.blit(cama, (10, 250))
-    screen.blit(ganhou, (570, 300))
-
     screen.blit(pegarImagem('.\Assets\Images\logo.png'), (100, 40))
 
     screen.blit(tarefa1, (460, 30, 100, 10))
@@ -451,12 +541,6 @@ def tituloLegendasTarefasNivel2():
 
     fontTarefa4 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
     tarefa4 = fontTarefa4.render("Tarefa 4", True, WHITE)
-
-    cama = pygame.image.load("./Assets/Images/cama.png").convert()
-    screen.blit(cama, (10, 250))
-
-    ganhou = pygame.image.load("./Assets/Images/ganhou.png").convert()
-    screen.blit(ganhou, (570, 300))
 
     screen.blit(pegarImagem('.\Assets\Images\logo.png'), (100, 40))
 
@@ -483,12 +567,6 @@ def tituloLegendasTarefasNivel3():
     fontTarefa5 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
     tarefa5 = fontTarefa5.render("Tarefa 5", True, WHITE)
 
-    cama = pygame.image.load("./Assets/Images/cama.png").convert()
-    screen.blit(cama, (10, 250))
-
-    ganhou = pygame.image.load("./Assets/Images/ganhou.png").convert()
-    screen.blit(ganhou, (570, 300))
-
     screen.blit(pegarImagem('.\Assets\Images\logo.png'), (100, 40))
 
     screen.blit(tarefa2, (460, 30, 100, 10))
@@ -508,12 +586,6 @@ def tituloLegendasTarefasFeminino():
 
     fontTarefa3 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
     tarefa3 = fontTarefa3.render("Tarefa 3", True, WHITE)
-
-    cama = pygame.image.load("./Assets/Images/cama.png").convert()
-    screen.blit(cama, (10, 250))
-
-    ganhou = pygame.image.load("./Assets/Images/ganhou.png").convert()
-    screen.blit(ganhou, (570, 300))
 
     screen.blit(pegarImagem('.\Assets\Images\logo.png'), (100, 40))
 
@@ -535,12 +607,6 @@ def tituloLegendasTarefasNivel2Feminino():
 
     fontTarefa4 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
     tarefa4 = fontTarefa4.render("Tarefa 4", True, WHITE)
-
-    cama = pygame.image.load("./Assets/Images/cama.png").convert()
-    screen.blit(cama, (10, 250))
-
-    ganhou = pygame.image.load("./Assets/Images/ganhou.png").convert()
-    screen.blit(ganhou, (570, 300))
 
     screen.blit(pegarImagem('.\Assets\Images\logo.png'), (100, 40))
 
@@ -566,12 +632,6 @@ def tituloLegendasTarefasNivel3Feminino():
 
     fontTarefa5 = pygame.font.SysFont("./Assets/Fonts/Bungee-Regular.ttf", 30)
     tarefa5 = fontTarefa5.render("Tarefa 5", True, WHITE)
-
-    cama = pygame.image.load("./Assets/Images/cama.png").convert()
-    screen.blit(cama, (10, 250))
-
-    ganhou = pygame.image.load("./Assets/Images/ganhou.png").convert()
-    screen.blit(ganhou, (570, 300))
 
     screen.blit(pegarImagem('.\Assets\Images\logo.png'), (100, 40))
 
@@ -603,37 +663,17 @@ def clicarProximoTarefas():
 
     input_boxes = [input_box1, input_box2, input_box3]
 
-    masculino = pygame.image.load("./Assets/Images/homem.png").convert()
-
     # Declarando a fonte do placar e variável contadora
     font = pygame.font.SysFont('sans', 40)
-
-    botaoNenhumaTarefa = criarRetangulo("Não concluí", (510, 485, 200, 75), BLUE, TOMATO, gameover)
-
-    x, y = 300, 300
-    move_x, move_y = 0, 0
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            if event.type == KEYDOWN:
-                if event.key == K_LEFT:
-                    move_x -= 1
-                if event.key == K_RIGHT:
-                    move_x += 1
-            if event.type == KEYUP:
-                if event.key == K_LEFT:
-                    move_x = 0
 
             # Capturando evendo de relogio e atualizando a variável contadora
             if event.type == CLOCKTICK:
                 temporizador = temporizador - 1
-
-            checarEventoBotao(botaoNenhumaTarefa, event)
-
-            x += move_x
-            y += move_y
 
             for box in input_boxes:
                 box.eventoInputBox(event)
@@ -642,16 +682,28 @@ def clicarProximoTarefas():
             cb2.update_checkbox(event)
             cb3.update_checkbox(event)
 
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_UP]:
+            homem.rect.y -= 5
+        if keys[pygame.K_DOWN]:
+            homem.rect.y += 5
+        if keys[pygame.K_LEFT]:
+            homem.rect.x -= 5
+        if keys[pygame.K_RIGHT]:
+            homem.rect.x += 5
+
         # Finalizando o jogo
         if temporizador == 0:
             gameover()
 
         # renderizando as fontes do placar na tela
         score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar), True, (WHITE))
-        screen.blit(score1, (300, 500))
+        screen.blit(score1, (450, 500))
 
-        screen.blit(masculino, (x, y))
-        botao(screen, botaoNenhumaTarefa)
+        homem.draw(screen)
+        ganhou.draw(screen)
+        perdeu.draw(screen)
 
         for box in input_boxes:
             box.atualizarInputBox()
@@ -661,13 +713,15 @@ def clicarProximoTarefas():
 
         # renderizando as fontes do cronometro na tela do usuario
         timer1 = font.render('Tempo ' + str(temporizador), True, (YELLOW))
-        screen.blit(timer1, (50, 500))
+        screen.blit(timer1, (200, 500))
 
         cb1.render_checkbox()
         cb2.render_checkbox()
         cb3.render_checkbox()
 
-        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked():
+        homem.colideGameOver(perdeu)
+
+        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked() and homem.colideSegundoNivel(ganhou):
             telaSegundoNivel()
 
         pygame.display.flip()
@@ -700,37 +754,21 @@ def clicarProximoTarefasNivel2():
     cb4 = Checkbox(screen, 650, 250)
     input_boxes = [input_box1, input_box2, input_box3, input_box4]
 
-    masculino = pygame.image.load("./Assets/Images/homem.png").convert()
-
     # Declarando a fonte do placar e variável contadora
     font = pygame.font.SysFont('sans', 40)
 
     botaoNenhumaTarefa = criarRetangulo("Não concluí", (510, 485, 200, 75), BLUE, TOMATO, gameover)
 
-    x, y = 300, 300
-    move_x, move_y = 0, 0
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            if event.type == KEYDOWN:
-                if event.key == K_LEFT:
-                    move_x -= 1
-                if event.key == K_RIGHT:
-                    move_x += 1
-            if event.type == KEYUP:
-                if event.key == K_LEFT:
-                    move_x = 0
 
             # Capturando evendo de relogio e atualizando a variável contadora
             if event.type == CLOCKTICK:
                 temporizador = temporizador - 1
 
             checarEventoBotao(botaoNenhumaTarefa, event)
-
-            x += move_x
-            y += move_y
 
             for box in input_boxes:
                 box.eventoInputBox(event)
@@ -740,16 +778,28 @@ def clicarProximoTarefasNivel2():
             cb3.update_checkbox(event)
             cb4.update_checkbox(event)
 
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_UP]:
+            homem.rect.y -= 5
+        if keys[pygame.K_DOWN]:
+            homem.rect.y += 5
+        if keys[pygame.K_LEFT]:
+            homem.rect.x -= 5
+        if keys[pygame.K_RIGHT]:
+            homem.rect.x += 5
+
         # Finalizando o jogo
         if temporizador == 0:
             gameover()
 
         # renderizando as fontes do placar na tela
-        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar + cb4.placar), True, (WHITE))
-        screen.blit(score1, (300, 500))
+        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar), True, (WHITE))
+        screen.blit(score1, (450, 500))
 
-        screen.blit(masculino, (x, y))
-        botao(screen, botaoNenhumaTarefa)
+        homem.draw(screen)
+        ganhou.draw(screen)
+        perdeu.draw(screen)
 
         for box in input_boxes:
             box.atualizarInputBox()
@@ -759,14 +809,16 @@ def clicarProximoTarefasNivel2():
 
         # renderizando as fontes do cronometro na tela do usuario
         timer1 = font.render('Tempo ' + str(temporizador), True, (YELLOW))
-        screen.blit(timer1, (50, 500))
+        screen.blit(timer1, (200, 500))
 
         cb1.render_checkbox()
         cb2.render_checkbox()
         cb3.render_checkbox()
         cb4.render_checkbox()
 
-        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked() and not cb4.is_unchecked():
+        homem.colideGameOver(perdeu)
+
+        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked() and not cb4.is_unchecked() and homem.colideTerceiroNivel(ganhou):
             telaTerceiroNivel()
 
         pygame.display.flip()
@@ -801,37 +853,21 @@ def clicarProximoTarefasNivel3():
     cb5 = Checkbox(screen, 320, 250)
     input_boxes = [input_box1, input_box2, input_box3, input_box4, input_box5]
 
-    masculino = pygame.image.load("./Assets/Images/homem.png").convert()
-
     # Declarando a fonte do placar e variável contadora
     font = pygame.font.SysFont('sans', 40)
 
     botaoNenhumaTarefa = criarRetangulo("Não concluí", (510, 485, 200, 75), BLUE, TOMATO, gameover)
 
-    x, y = 300, 300
-    move_x, move_y = 0, 0
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            if event.type == KEYDOWN:
-                if event.key == K_LEFT:
-                    move_x -= 1
-                if event.key == K_RIGHT:
-                    move_x += 1
-            if event.type == KEYUP:
-                if event.key == K_LEFT:
-                    move_x = 0
 
             # Capturando evendo de relogio e atualizando a variável contadora
             if event.type == CLOCKTICK:
                 temporizador = temporizador - 1
 
             checarEventoBotao(botaoNenhumaTarefa, event)
-
-            x += move_x
-            y += move_y
 
             for box in input_boxes:
                 box.eventoInputBox(event)
@@ -842,16 +878,28 @@ def clicarProximoTarefasNivel3():
             cb4.update_checkbox(event)
             cb5.update_checkbox(event)
 
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_UP]:
+            homem.rect.y -= 5
+        if keys[pygame.K_DOWN]:
+            homem.rect.y += 5
+        if keys[pygame.K_LEFT]:
+            homem.rect.x -= 5
+        if keys[pygame.K_RIGHT]:
+            homem.rect.x += 5
+
         # Finalizando o jogo
         if temporizador == 0:
             gameover()
 
         # renderizando as fontes do placar na tela
-        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar + cb4.placar + cb5.placar), True, (WHITE))
-        screen.blit(score1, (300, 500))
+        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar), True, (WHITE))
+        screen.blit(score1, (450, 500))
 
-        screen.blit(masculino, (x, y))
-        botao(screen, botaoNenhumaTarefa)
+        homem.draw(screen)
+        ganhou.draw(screen)
+        perdeu.draw(screen)
 
         for box in input_boxes:
             box.atualizarInputBox()
@@ -861,7 +909,7 @@ def clicarProximoTarefasNivel3():
 
         # renderizando as fontes do cronometro na tela do usuario
         timer1 = font.render('Tempo ' + str(temporizador), True, (YELLOW))
-        screen.blit(timer1, (50, 500))
+        screen.blit(timer1, (200, 500))
 
         cb1.render_checkbox()
         cb2.render_checkbox()
@@ -869,7 +917,9 @@ def clicarProximoTarefasNivel3():
         cb4.render_checkbox()
         cb5.render_checkbox()
 
-        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked() and not cb4.is_unchecked() and not cb5.is_unchecked():
+        homem.colideGameOver(perdeu)
+
+        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked() and not cb4.is_unchecked() and not cb5.is_unchecked() and homem.colideUltimoNivel(ganhou):
             ultimaTela()
 
         pygame.display.flip()
@@ -900,37 +950,21 @@ def clicarProximoTarefasFeminino():
     cb3 = Checkbox(screen, 650, 190)
     input_boxes = [input_box1, input_box2, input_box3]
 
-    feminino = pygame.image.load("./Assets/Images/mulher.png").convert()
-
     # Declarando a fonte do placar e variável contadora
     font = pygame.font.SysFont('sans', 40)
 
     botaoNenhumaTarefa = criarRetangulo("Não concluí", (510, 485, 200, 75), BLUE, TOMATO, gameover)
 
-    x, y = 300, 300
-    move_x, move_y = 0, 0
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            if event.type == KEYDOWN:
-                if event.key == K_LEFT:
-                    move_x -= 1
-                if event.key == K_RIGHT:
-                    move_x += 1
-            if event.type == KEYUP:
-                if event.key == K_LEFT:
-                    move_x = 0
 
             # Capturando evendo de relogio e atualizando a variável contadora
             if event.type == CLOCKTICK:
                 temporizador = temporizador - 1
 
             checarEventoBotao(botaoNenhumaTarefa, event)
-
-            x += move_x
-            y += move_y
 
             for box in input_boxes:
                 box.eventoInputBox(event)
@@ -939,16 +973,28 @@ def clicarProximoTarefasFeminino():
             cb2.update_checkbox(event)
             cb3.update_checkbox(event)
 
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_UP]:
+            mulher.rect.y -= 5
+        if keys[pygame.K_DOWN]:
+            mulher.rect.y += 5
+        if keys[pygame.K_LEFT]:
+            mulher.rect.x -= 5
+        if keys[pygame.K_RIGHT]:
+            mulher.rect.x += 5
+
         # Finalizando o jogo
         if temporizador == 0:
             gameover()
 
         # renderizando as fontes do placar na tela
         score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar), True, (WHITE))
-        screen.blit(score1, (300, 500))
+        screen.blit(score1, (450, 500))
 
-        screen.blit(feminino, (x, y))
-        botao(screen, botaoNenhumaTarefa)
+        mulher.draw(screen)
+        ganhou.draw(screen)
+        perdeu.draw(screen)
 
         for box in input_boxes:
             box.atualizarInputBox()
@@ -958,13 +1004,15 @@ def clicarProximoTarefasFeminino():
 
         # renderizando as fontes do cronometro na tela do usuario
         timer1 = font.render('Tempo ' + str(temporizador), True, (YELLOW))
-        screen.blit(timer1, (50, 500))
+        screen.blit(timer1, (200, 500))
 
         cb1.render_checkbox()
         cb2.render_checkbox()
         cb3.render_checkbox()
 
-        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked():
+        mulher.colideGameOver(perdeu)
+
+        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked() and mulher.colideSegundoNivel(ganhou):
             telaSegundoNivelFeminino()
 
         pygame.display.flip()
@@ -997,37 +1045,21 @@ def clicarProximoTarefasNivel2Feminino():
     cb4 = Checkbox(screen, 650, 250)
     input_boxes = [input_box1, input_box2, input_box3, input_box4]
 
-    feminino = pygame.image.load("./Assets/Images/mulher.png").convert()
-
     # Declarando a fonte do placar e variável contadora
     font = pygame.font.SysFont('sans', 40)
 
     botaoNenhumaTarefa = criarRetangulo("Não concluí", (510, 485, 200, 75), BLUE, TOMATO, gameover)
 
-    x, y = 300, 300
-    move_x, move_y = 0, 0
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            if event.type == KEYDOWN:
-                if event.key == K_LEFT:
-                    move_x -= 1
-                if event.key == K_RIGHT:
-                    move_x += 1
-            if event.type == KEYUP:
-                if event.key == K_LEFT:
-                    move_x = 0
 
             # Capturando evendo de relogio e atualizando a variável contadora
             if event.type == CLOCKTICK:
                 temporizador = temporizador - 1
 
             checarEventoBotao(botaoNenhumaTarefa, event)
-
-            x += move_x
-            y += move_y
 
             for box in input_boxes:
                 box.eventoInputBox(event)
@@ -1037,16 +1069,28 @@ def clicarProximoTarefasNivel2Feminino():
             cb3.update_checkbox(event)
             cb4.update_checkbox(event)
 
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_UP]:
+            mulher.rect.y -= 5
+        if keys[pygame.K_DOWN]:
+            mulher.rect.y += 5
+        if keys[pygame.K_LEFT]:
+            mulher.rect.x -= 5
+        if keys[pygame.K_RIGHT]:
+            mulher.rect.x += 5
+
         # Finalizando o jogo
         if temporizador == 0:
             gameover()
 
         # renderizando as fontes do placar na tela
-        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar + cb4.placar), True, (WHITE))
-        screen.blit(score1, (300, 500))
+        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar), True, (WHITE))
+        screen.blit(score1, (450, 500))
 
-        screen.blit(feminino, (x, y))
-        botao(screen, botaoNenhumaTarefa)
+        mulher.draw(screen)
+        ganhou.draw(screen)
+        perdeu.draw(screen)
 
         for box in input_boxes:
             box.atualizarInputBox()
@@ -1056,14 +1100,16 @@ def clicarProximoTarefasNivel2Feminino():
 
         # renderizando as fontes do cronometro na tela do usuario
         timer1 = font.render('Tempo ' + str(temporizador), True, (YELLOW))
-        screen.blit(timer1, (50, 500))
+        screen.blit(timer1, (200, 500))
 
         cb1.render_checkbox()
         cb2.render_checkbox()
         cb3.render_checkbox()
         cb4.render_checkbox()
 
-        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked() and not cb4.is_unchecked():
+        mulher.colideGameOver(perdeu)
+
+        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked() and not cb4.is_unchecked() and mulher.colideTerceiroNivel(ganhou):
             telaTerceiroNivelFeminino()
 
         pygame.display.flip()
@@ -1098,37 +1144,21 @@ def clicarProximoTarefasNivel3Feminino():
     cb5 = Checkbox(screen, 320, 250)
     input_boxes = [input_box1, input_box2, input_box3, input_box4, input_box5]
 
-    feminino = pygame.image.load("./Assets/Images/mulher.png").convert()
-
     # Declarando a fonte do placar e variável contadora
     font = pygame.font.SysFont('sans', 40)
 
     botaoNenhumaTarefa = criarRetangulo("Não concluí", (510, 485, 200, 75), BLUE, TOMATO, gameover)
 
-    x, y = 300, 300
-    move_x, move_y = 0, 0
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            if event.type == KEYDOWN:
-                if event.key == K_LEFT:
-                    move_x -= 1
-                if event.key == K_RIGHT:
-                    move_x += 1
-            if event.type == KEYUP:
-                if event.key == K_LEFT:
-                    move_x = 0
 
             # Capturando evendo de relogio e atualizando a variável contadora
             if event.type == CLOCKTICK:
                 temporizador = temporizador - 1
 
             checarEventoBotao(botaoNenhumaTarefa, event)
-
-            x += move_x
-            y += move_y
 
             for box in input_boxes:
                 box.eventoInputBox(event)
@@ -1139,16 +1169,28 @@ def clicarProximoTarefasNivel3Feminino():
             cb4.update_checkbox(event)
             cb5.update_checkbox(event)
 
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_UP]:
+            mulher.rect.y -= 5
+        if keys[pygame.K_DOWN]:
+            mulher.rect.y += 5
+        if keys[pygame.K_LEFT]:
+            mulher.rect.x -= 5
+        if keys[pygame.K_RIGHT]:
+            mulher.rect.x += 5
+
         # Finalizando o jogo
         if temporizador == 0:
             gameover()
 
         # renderizando as fontes do placar na tela
-        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar + cb4.placar + cb5.placar), True, (WHITE))
-        screen.blit(score1, (300, 500))
+        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar), True, (WHITE))
+        screen.blit(score1, (450, 500))
 
-        screen.blit(feminino, (x, y))
-        botao(screen, botaoNenhumaTarefa)
+        mulher.draw(screen)
+        ganhou.draw(screen)
+        perdeu.draw(screen)
 
         for box in input_boxes:
             box.atualizarInputBox()
@@ -1158,7 +1200,7 @@ def clicarProximoTarefasNivel3Feminino():
 
         # renderizando as fontes do cronometro na tela do usuario
         timer1 = font.render('Tempo ' + str(temporizador), True, (YELLOW))
-        screen.blit(timer1, (50, 500))
+        screen.blit(timer1, (200, 500))
 
         cb1.render_checkbox()
         cb2.render_checkbox()
@@ -1166,7 +1208,9 @@ def clicarProximoTarefasNivel3Feminino():
         cb4.render_checkbox()
         cb5.render_checkbox()
 
-        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked() and not cb4.is_unchecked() and not cb5.is_unchecked():
+        mulher.colideGameOver(perdeu)
+
+        if not cb1.is_unchecked() and not cb2.is_unchecked() and not cb3.is_unchecked() and not cb4.is_unchecked() and not cb5.is_unchecked() and mulher.colideUltimoNivel(ganhou):
             ultimaTela()
 
         pygame.display.flip()
@@ -1313,8 +1357,6 @@ while jogoRodando:
             clicarProximoTarefas()
 
     screen.fill(BLUE)
-    background = pygame.image.load("./Assets/Images/checklist.png").convert()
-
     screen.blit(pegarImagem('.\Assets\Images\logo.png'), (300, 40))
 
     # Estados para mostrar a tela de cada opção
