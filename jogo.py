@@ -1318,7 +1318,7 @@ botaoProximoInstrucoes2 = criarRetangulo("Feminino", (400, 500, 200, 75), BLUE, 
 
 # Jogo 2º Tela / Instruções
 legenda1Jogo = criarRetangulo("Ajude seu avatar a sair da PROCASTINAÇÃO", (300, 250, 200, 75), BLUE, BLUE, legendaJogo)
-legenda2Jogo = criarRetangulo("Comece definindo os horários com 3 tarefas", (300, 350, 200, 75), BLUE, BLUE,
+legenda2Jogo = criarRetangulo("Defina 3 tarefas e ao completá-las mova seu Avatar", (300, 350, 200, 75), BLUE, BLUE,
                               legendaJogo)
 botaoProximoTarefas = criarRetangulo("Próximo", (300, 500, 200, 75), BLUE, TOMATO, clicarProximoTarefas)
 botaoProximoTarefasFeminino = criarRetangulo("Próximo", (300, 500, 200, 75), BLUE, TOMATO, clicarProximoTarefasFeminino)
