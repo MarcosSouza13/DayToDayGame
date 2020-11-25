@@ -794,7 +794,7 @@ def clicarProximoTarefasNivel2():
             gameover()
 
         # renderizando as fontes do placar na tela
-        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar), True, (WHITE))
+        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar + cb4.placar), True, (WHITE))
         screen.blit(score1, (450, 500))
 
         homem.draw(screen)
@@ -894,7 +894,7 @@ def clicarProximoTarefasNivel3():
             gameover()
 
         # renderizando as fontes do placar na tela
-        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar), True, (WHITE))
+        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar + cb4.placar + cb5.placar), True, (WHITE))
         screen.blit(score1, (450, 500))
 
         homem.draw(screen)
@@ -1085,7 +1085,7 @@ def clicarProximoTarefasNivel2Feminino():
             gameover()
 
         # renderizando as fontes do placar na tela
-        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar), True, (WHITE))
+        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar + cb4.placar), True, (WHITE))
         screen.blit(score1, (450, 500))
 
         mulher.draw(screen)
@@ -1185,7 +1185,7 @@ def clicarProximoTarefasNivel3Feminino():
             gameover()
 
         # renderizando as fontes do placar na tela
-        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar), True, (WHITE))
+        score1 = font.render('Placar ' + str(cb1.placar + cb2.placar + cb3.placar + cb4.placar + cb5.placar), True, (WHITE))
         screen.blit(score1, (450, 500))
 
         mulher.draw(screen)
